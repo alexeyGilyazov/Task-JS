@@ -102,3 +102,40 @@
 
 //     return firstHalfSum === secondHalfSum;
 // }
+
+
+
+
+
+// const getSameCount = (arr1, arr2) => {
+//     if (arr1.length === 0 && arr2.length === 0) return 0;
+//     let res = [];
+
+//     for (const item of arr1) {
+//         if (arr2.includes(item) && !res.includes(item)) {
+//             res.push(item);
+//         }
+//     }
+//     return res.length;
+// }
+// const getSameCount = (arr1, arr2) => {
+//     if (arr1.length === 0 && arr2.length === 0) return 0;
+//     const arr1Set = new Set(arr1);
+//     const arr2Set = new Set(arr2);
+//     let count = 0;
+//     arr1Set.forEach((el) => {
+//         if (arr2Set.has(el)) {
+//             count++;
+//         }
+//     });
+//     return count;
+// };
+// const getSameCount = (arr1, arr2) => {
+//     if (arr1.length === 0 && arr2.length === 0) return 0;
+//     const arr1Set = new Set(arr1);
+//     const arr2Set = new Set(arr2);
+//     const commonElements = [...arr1Set].filter(el => arr2Set.has(el));
+//     return commonElements.length;
+// };
+
+// console.log(getSameCount([1, 10, 3], [10, 100, 35, 1]));
