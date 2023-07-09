@@ -84,11 +84,9 @@
 //     const half = digits.length / 2;
 //     let firstHalfSum = 0;
 //     let secondHalfSum = 0;
-
 //     digits.forEach((digit, index) => {
 //         index < half ? firstHalfSum += digit : secondHalfSum += digit
 //     })
-
 //     return firstHalfSum === secondHalfSum
 // }
 
@@ -96,21 +94,15 @@
 //     const digits = ticketNumber.split('').map(Number);
 //     const half = digits.length / 2;
 
-//     // Используем метод reduce с индексом для вычисления суммы каждой половины
 //     const firstHalfSum = digits.reduce((sum, digit, index) => index < half ? sum + digit : sum, 0)
 //     const secondHalfSum = digits.reduce((sum, digit, index) => index >= half ? sum + digit : sum, 0)
-
 //     return firstHalfSum === secondHalfSum;
 // }
-
-
-
 
 
 // const getSameCount = (arr1, arr2) => {
 //     if (arr1.length === 0 && arr2.length === 0) return 0;
 //     let res = [];
-
 //     for (const item of arr1) {
 //         if (arr2.includes(item) && !res.includes(item)) {
 //             res.push(item);
@@ -118,6 +110,7 @@
 //     }
 //     return res.length;
 // }
+
 // const getSameCount = (arr1, arr2) => {
 //     if (arr1.length === 0 && arr2.length === 0) return 0;
 //     const arr1Set = new Set(arr1);
@@ -130,6 +123,7 @@
 //     });
 //     return count;
 // };
+
 // const getSameCount = (arr1, arr2) => {
 //     if (arr1.length === 0 && arr2.length === 0) return 0;
 //     const arr1Set = new Set(arr1);
@@ -137,5 +131,133 @@
 //     const commonElements = [...arr1Set].filter(el => arr2Set.has(el));
 //     return commonElements.length;
 // };
-
 // console.log(getSameCount([1, 10, 3], [10, 100, 35, 1]));
+
+
+
+// Реализуйте flatten(). Эта функция принимает на вход массив и выпрямляет его: если элементами массива являются массивы, то flatten сводит всё к одному массиву, раскрывая один уровень вложенности.В js эта функция реализована как метод flat() у массивов. Его использовать нельзя.
+// const flatten = arr => {
+//     let result =[]
+//     arr.forEach(item => {
+//         if(Array.isArray(item)) {
+//             result = result.concat(item)
+//         } else {
+//             result.push(item)
+//         }
+//     });
+//     return result
+// }
+
+// const flatten = arr => {
+//     let result = []
+//     for(let i = 0; i < arr.length; i++) {
+//         Array.isArray(arr[i]) ? result = [...result, ...flatten(arr[i])] : result.push(arr[i])
+//     }
+//     return result
+// };
+
+// const flatten = arr =>  arr.reduce((acc,item) => Array.isArray(item) ? [...acc,...flatten(item)]: [...acc, item],[])
+
+// const flatten = arr => {
+//     let result = []
+//     arr.forEach(item => {
+//         console.log(item);
+//         if(Array.isArray(item)) {
+//             result = [...result, ...flatten(item)]
+//         } else {
+//             result.push(item)
+//         }
+//     });
+//     return result
+// }
+// console.log(flatten([1,2,[3,4,[5,6,7]]])); // [1, 3, 2, 9]
+
+
+
+// Реализуйте и экспортируйте функцию по умолчанию, которая принимает на вход строку, состоящую только из открывающих и закрывающих скобок разных типов, и проверяет, является ли эта строка сбалансированной. Открывающие и закрывающие скобки должны быть одного вида. Пустая строка (отсутствие скобок) считается сбалансированной.
+// Строка считается корректной (сбалансированной), если содержащаяся в ней скобочная структура соответствует требованиям:
+// Скобки — это парные структуры. У каждой открывающей скобки должна быть соответствующая ей закрывающая скобка.
+// Скобки должны закрываться в правильном порядке:
+
+// const isBracketStructureBalanced = str => {
+//     let stack = []
+//     let map = {
+//         ')': '(',
+//         ']': '[',
+//         '}': '{',
+//         '>': '<',
+//     }
+
+//     for(const char of str) {
+//         if(map.hasOwnProperty(char)) {
+//             if(map[char] !== stack.pop()) return false
+//         }
+//         else {
+//             stack.push(char)
+//         }
+//     }
+//     return stack.length === 0
+// }
+// console.log(isBracketStructureBalanced('())'));
+
+
+
+// Экспортируйте по умолчанию функцию, которая принимает массив, каждый элемент которого содержит число или знак операции (+, -, *, /). Функция должна вернуть результат вычисления по обратной польской записи. Если в какой-то момент происходит деление на ноль, функция должна вернуть значение null.
+// const calcInPolishNotation = arr => {
+//     const stack = []
+
+//     for (const item of arr) {
+//         if (!Number.isInteger(item)) {
+//             const a = stack.pop()
+//             const b = stack.pop()
+//             console.log(b, a);
+
+//             switch (item) {
+//                 case '+':
+//                     stack.push(a + b)
+//                     break
+//                 case '-':
+//                     stack.push(b - a)
+//                     break
+//                 case '*':
+//                     stack.push(b * a)
+//                     break
+//                 case '/':
+//                     if (a === 0) {
+//                         return null
+//                     } else {
+//                         stack.push(b / a)
+//                         break
+//                     }
+//                 default:
+//                     return arr
+//             }
+//         } else {
+//             stack.push(item)
+//         }
+//     }
+//     return stack.pop()
+// }
+// console.log(calcInPolishNotation([1, 2, '+', 4, '*', 3, '+']));
+// console.log(calcInPolishNotation([7, 5, '+',2,'/',4, '+']));
+
+
+
+// создайте функцию, которая осуществляет пузырьковую сортировку 
+// const bubbleSort = arr => {
+//     let stepCount = arr.length 
+//     let swapped
+//     do {
+//         swapped = false 
+//         for(let i = 0; i < arr.length; i++) {
+//             if(arr[i] > arr[i+1]) {
+//                 [arr[i], arr[i+1]] = [arr[i+1], arr[i]]
+//                 swapped = true
+//             }
+//         }
+//         stepCount--
+//     }
+//     while(swapped)
+//     return arr
+// }
+// console.log(bubbleSort([55,-2,3,7,1,0]));
