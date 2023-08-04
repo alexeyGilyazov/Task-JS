@@ -261,3 +261,56 @@
 //     return arr
 // }
 // console.log(bubbleSort([55,-2,3,7,1,0]));
+
+
+
+
+
+// You must implement a function that returns the difference between the largest and the smallest value in a given list / array(lst) received as the parameter
+// lst contains integers, that means it may contain some negative numbers
+// if lst is empty or contains a single element, return 0
+// lst is not sorted
+// [1, 2, 3, 4]   //  returns 3 because 4 -   1  == 3
+// [1, 2, 3, -4]  //  returns 7 because 3 - (-4) == 7
+
+// function maxDiff(list) {
+//     let min = list[0]
+//     let max = list[0]
+//     for (let i = 0; i < list.length; i++) {
+//         if (list[i] <= min) {
+//             min = list[i]
+//         }
+//         else if (list[i] >= max) {
+//             max = list[i]
+//         }
+//     }
+//     return max - min
+// };
+
+
+
+// const maxDiff = arr => arr.length === 0 ? 0 : Math.max(...arr) - Math.min(...arr)
+// console.log(maxDiff([100, 2, 1, 4]));
+// You will be given an array of events, which are represented by strings.The strings are dates in HH: MM:SS format.
+// It is known that all events are recorded in chronological order and two events could not occur in the same second.Define the minimum number of days during which the log is written.
+//     Example:
+
+// Input -> ["00:00:00", "00:01:11", "02:15:59", "23:59:58", "23:59:59"]
+// Output -> 1
+// Input -> ["12:12:12"]
+// Output -> 1
+// Input -> ["12:00:00", "23:59:59", "00:00:00"]
+// Output -> 2
+
+
+
+function checkLogs(log) {
+    let countDate = 1
+    for (let i = 1; i < log.length; i++) {
+        if (log[i] == '00:00:00') {
+            countDate++
+        }
+    }
+    return countDate
+}
+console.log(checkLogs(["00:00:00", "00:01:11", "02:15:59", "23:59:58", "23:59:59"]));
