@@ -302,15 +302,102 @@
 // Input -> ["12:00:00", "23:59:59", "00:00:00"]
 // Output -> 2
 
+// function checkLogs(log) {
+//     let prev = "99:99:99";
+//     let days = 0;
+//     log.forEach(t => {
+//         if (t <= prev) days++;
+//         prev = t;
+//     });
+//     return days;
+// }
+
+// console.log(checkLogs(["12:00:00", "23:59:59", "00:00:00", "00:00:00"]));
 
 
-function checkLogs(log) {
-    let countDate = 1
-    for (let i = 1; i < log.length; i++) {
-        if (log[i] == '00:00:00') {
-            countDate++
-        }
-    }
-    return countDate
+// The national go - kart racing competition is taking place at your local town and you've been called for building the winners podium with the available wooden blocks. Thankfully you are in a wood-rich area, number of blocks are always at least 6.
+// Remember a classic racing podium has three platforms for first, second and third place.First place is the highest and second place is higher than third.Also notice that platforms are arranged as 2nd - 1st - 3rd.
+// The organizers want a podium that satisfies:
+// The first place platform has the minimum height possible
+// The second place platform has the closest height to first place
+// All platforms have heights greater than zero.
+//     Task
+// Given the numbers of blocks available, return an array / tuple or another data structure depending on the language(refer sample tests) with the heights of 2nd, 1st, 3rd places platforms.
+
+// 11 -> [4, 5, 2]
+// 6 -> [2, 3, 1]
+// 10 -> [4, 5, 1]
+
+
+
+// function racePodium(blocks) {
+//     const firstPlace = blocks % 2 === 0 ? Math.ceil((blocks / 2)) : Math.floor(blocks / 2)
+//     const secondPlace = firstPlace - 1
+//     const thirdPlace = blocks - firstPlace - secondPlace
+//     const result = []
+//     result.push(secondPlace, firstPlace, thirdPlace)
+//     return result
+// }
+
+// function racePodium(blocks) {
+//     let first = Math.ceil(blocks / 3) + 1
+//     let second = first - 1;
+//     let third = blocks - first - second;
+//     if (third == 0) {
+//         third = 1
+//         second -= 1
+//     }
+//     return [second, first, third]
+// }
+
+
+// console.log(racePodium(100000));
+
+
+// var makeBackronym = function (string) {
+//     const dict = {
+//         A: 'awesome',
+//         B: 'beautiful',
+//         C: 'confident',
+//         D: 'disturbing',
+//         E: 'eager',
+//         F: 'fantastic',
+//         G: 'gregarious',
+//         H: 'hippy',
+//         I: 'ingestable',
+//         J: 'joke',
+//         K: 'klingon',
+//         L: 'literal',
+//         M: 'mustache',
+//         N: 'newtonian',
+//         O: 'oscillating',
+//         P: 'perfect',
+//         Q: 'queen',
+//         R: 'rant',
+//         S: 'stylish',
+//         T: 'turn',
+//         U: 'underlying',
+//         V: 'volcano',
+//         W: 'weird',
+//         X: 'xylophone',
+//         Y: 'yogic',
+//         Z: 'zero'
+//     }
+//     let res = ''
+//     Array.from(string).forEach(item => {
+//         const wordUpperCase = item.toUpperCase()
+//         res += `${dict[wordUpperCase]} `
+//     })
+//     return res.trim()
+// };
+
+// console.log(makeBackronym('interesting'));
+
+const replaceNth = (str, nth, oldVlaue, newValue) => {
+    const str = new RegExp(str, oldVlaue)
+    console.log(str);
 }
-console.log(checkLogs(["00:00:00", "00:01:11", "02:15:59", "23:59:58", "23:59:59"]));
+
+
+
+console.log(replaceNth("Vader said: No, I am your father!", 2, 'a', 'o'));
