@@ -390,7 +390,6 @@
 //     })
 //     return res.trim()
 // };
-
 // console.log(makeBackronym('interesting'));
 
 // const replaceNth = (str, nth, oldVlaue, newValue) => {
@@ -398,3 +397,97 @@
 //     console.log(str);
 // }
 // console.log(replaceNth("Vader said: No, I am your father!", 2, 'a', 'o'));
+
+
+// The Task
+// What if we need the length of the words separated by a space to be added at the end of that same word and have it returned as an array?
+// Example(Input --> Output)
+// "apple ban" --> ["apple 5", "ban 3"]
+// "you will win" -->["you 3", "will 4", "win 3"]
+// Your task is to write a function that takes a String and returns an Array/list with the length of each word added to each element .
+// Note: String will have at least one element; words will always be separated by a space.
+
+// function addLength(str) {
+//     return str.split(' ').map(word => `${word} ${word.length}`)
+// }
+// addLength('apple ban')
+
+
+
+// The Task
+// Think of a way to store the languages as a database. The languages are listed below so you can copy and paste!
+// Write a 'welcome' function that takes a parameter 'language', with a type String, and returns a greeting - if you have it in your database. It should default to English if the language is not in the database, or in the event of an invalid input.
+
+// const languages = {
+//     english: "Welcome",
+//     czech: "Vitejte",
+//     danish: "Velkomst",
+//     dutch: "Welkom",
+//     estonian: "Tere tulemast",
+//     finnish: "Tervetuloa",
+//     flemish: "Welgekomen",
+//     french: "Bienvenue",
+//     german: "Willkommen",
+//     irish: "Failte",
+//     italian: "Benvenuto",
+//     latvian: "Gaidits",
+//     lithuanian: "Laukiamas",
+//     polish: "Witamy",
+//     spanish: "Bienvenido",
+//     swedish: "Valkommen",
+//     welsh: "Croeso"
+// }
+
+// function greet(greeting) {
+//     if (!greeting) return languages.english
+//     return languages[greeting] || 'Welcome'
+// }
+
+// greet('swedish')
+
+
+// ???????????
+// Task
+// Given the numbers of blocks available, return an array / tuple or another data structure depending on the language(refer sample tests) with the heights of 2nd, 1st, 3rd places platforms.
+//     Examples(input -> output)
+// 11 -> [4, 5, 2]
+// 6 -> [2, 3, 1]
+// 10 -> [4, 5, 1]
+
+// function racePodium(blocks) {
+//     const firstPlace = Math.floor(blocks / 2)
+//     const secondPlace = firstPlace - 1
+//     const thirdPlace = blocks - firstPlace - secondPlace
+
+//     return [secondPlace, firstPlace, thirdPlace]
+// }
+
+// racePodium(10000)
+
+
+
+
+//TASK
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))((" 
+
+function duplicateEncode(word) {
+    const arr = word.toLowerCase().split('')
+    let res = ''
+    arr.forEach((char, index) => {
+        if (arr.includes(char, index + 1)) {
+            res += ')'
+        }
+        else {
+            res += '('
+        }
+    });
+    console.log(res);
+}
+
+
+duplicateEncode('recede')
