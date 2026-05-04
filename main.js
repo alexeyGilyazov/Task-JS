@@ -393,11 +393,8 @@
 
 // console.log(makeBackronym('interesting'));
 
-const replaceNth = (str, nth, oldVlaue, newValue) => {
-    const str = new RegExp(str, oldVlaue)
-    console.log(str);
-}
-
-
-
-console.log(replaceNth("Vader said: No, I am your father!", 2, 'a', 'o'));
+// const replaceNth = (str, nth, oldVlaue, newValue) => {
+//     const str = new RegExp(str, oldVlaue)
+//     console.log(str);
+// }
+// console.log(replaceNth("Vader said: No, I am your father!", 2, 'a', 'o'));
