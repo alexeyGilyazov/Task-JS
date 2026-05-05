@@ -475,19 +475,34 @@
 // "Success"  =>  ")())())"
 // "(( @"     =>  "))((" 
 
-function duplicateEncode(word) {
-    const arr = word.toLowerCase().split('')
-    let res = ''
-    arr.forEach((char, index) => {
-        if (arr.includes(char, index + 1)) {
-            res += ')'
-        }
-        else {
-            res += '('
-        }
-    });
-    console.log(res);
-}
+// function duplicateEncode(word) {
+//     const arr = word.toLowerCase().split('');
+//     let res = ''
+
+//     const counts = {};
+//     const charCount = arr.map((char, index) => {
+//         counts[char] = (counts[char] || 0) + 1
+//     })
+
+//     const result = arr.map(el => {
+//         res += counts[el] > 1 ? ')' : '('
+//     })
+//     return res
+
+// }
+// duplicateEncode('Success')
 
 
-duplicateEncode('recede')
+
+// TASK
+// The cockroach is one of the fastest insects. Write a function which takes its speed in km per hour and returns it in cm per second, rounded down to the integer (= floored).
+// For example:
+// 1.08 --> 30
+
+// function cockroachSpeed(s) {
+//     const conversSpeed = Math.ceil(s * 27.78)
+//     console.log(conversSpeed);
+//     return cockroachSpeed
+// }
+
+// cockroachSpeed(30)
