@@ -499,10 +499,116 @@
 // For example:
 // 1.08 -- > 30
 
-function cockroachSpeed(s) {
-    const conversSpeed = Math.ceil(s * 27.78)
-    console.log(conversSpeed);
-    return cockroachSpeed
+
+const selectionSort = array => {
+    const arrayLength = array.length
+    console.log('начальное состояние массива', array);
+    for (let i = 0; i < arrayLength - 1; i++) {
+        let minIndexIndex = i
+        console.log(`берем i элемент это ${array[i]}`);
+
+        for (let j = i + 1; j < arrayLength; j++) {
+            // console.log(`берем i + 1 он же J ${array[j]} `);
+            if (array[j] <= array[minIndexIndex]) {
+                console.log(`если ты здесь значит J ${array[j]} меньше I ${array[i]} и теперь J ${array[j]}  это наименьший элемент`);
+                minIndexIndex = j
+
+            }
+            else {
+                console.log(`!!!!!!!!!!!!!если ты здесь значит J ${array[j]} больше I ${array[i]} и мы не меняем местами `);
+            }
+        }
+        if (minIndexIndex !== i) {
+            console.log(`здесь мы меняем местами array I ${array[i]} и второй элемент array J ${array[minIndexIndex]}`);
+            [array[i], array[minIndexIndex]] = [array[minIndexIndex], array[i]]
+        } else {
+            console.log('значит хз что блять ');
+        }
+
+        console.log(`${i + 1} итерация цикла закончилась и массив теперь ${array}`);
+    }
+
 }
 
-cockroachSpeed(30)
+const selectionSort = array => {
+    for (let i = 0; i < array.length - 1; i++) {
+        let min = i
+
+        for (let j = i + 1; j < array.length; j++) {
+
+            if (array[j] <= array[min]) {
+                min = j
+            }
+        }
+        if (min !== i) {
+            [array[i], array[min]] = [array[min], array[i]]
+        }
+    }
+    console.log(array);
+}
+console.log(selectionSort([5, 1, 4, 2, 3]));
+
+
+const bublesort = arr => {
+    const n = arr.length
+
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                const temp = arr[j]
+                arr[j] = arr[j + 1]
+                arr[j + 1] = temp
+            }
+        }
+    }
+    console.log(arr);
+}
+
+console.log(bublesort([5, 1, 2, 4, 3]));
+
+
+const quickSort = (arr) => {
+    const n = arr.length
+    if (n <= 1) {
+        return arr
+    }
+    const pivotIndex = Math.floor(n / 2)
+    const pivot = arr[pivotIndex]
+    const left = []
+    const right = []
+    for (let i = 0; i < n; i++) {
+
+        if (i === pivotIndex) continue
+        if (arr[i] < pivot) {
+            left.push(arr[i])
+        }
+        else if (arr[i] > pivot) {
+            right.push(arr[i])
+        }
+    }
+    return [...quickSort(left), pivot, ...quickSort(right)]
+}
+
+console.log(quickSort([5, 1, 4, 2, 3]));
+
+
+
+const selectionSort = arr => {
+    const n = arr.length;
+    for (let i = 0; i < n; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (minIndex !== i) {
+            [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+        }
+    }
+    console.log(arr);
+    return arr;
+}
+
+console.log(selectionSort([5, 1, 4, 2, 3]));
+
